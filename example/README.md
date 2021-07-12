@@ -1,6 +1,6 @@
-# example
+# form_table_example
 
-A new Flutter project.
+Demonstrates how to use the form_table plugin.
 
 ## Getting Started
 

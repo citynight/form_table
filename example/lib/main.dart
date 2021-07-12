@@ -1,6 +1,6 @@
-import 'package:example/page/FormPage.dart';
-import 'package:example/page/form_dynamic_page.dart';
 import 'package:flutter/material.dart';
+import 'package:form_table_example/page/FormPage.dart';
+import 'package:form_table_example/page/form_dynamic_page.dart';
 
 void main() {
   runApp(MyApp());

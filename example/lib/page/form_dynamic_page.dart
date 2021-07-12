@@ -1,11 +1,10 @@
 import 'dart:convert';
-
-import 'package:example/widgets/next_button.dart';
-import 'package:example/widgets/photos_cell.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:form_table/form_table.dart';
 import 'package:form_table/form_table/form_table.dart';
+import 'package:form_table_example/widgets/next_button.dart';
+import 'package:form_table_example/widgets/photos_cell.dart';
 
 import '../utils.dart';
 

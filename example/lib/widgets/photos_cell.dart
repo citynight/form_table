@@ -1,6 +1,6 @@
-import 'package:example/widgets/select_image.dart';
 import 'package:flutter/material.dart';
 import 'package:form_table/form_table.dart';
+import 'package:form_table_example/widgets/select_image.dart';
 
 /// @Description
 /// @CreateTime 2021/7/12 6:26 下午.
