@@ -75,7 +75,7 @@
                 "proid":"PB0010",
                 "title":"性别",
                 "hintvalue":"请选择",
-                "value":"",
+                "value":"男",
                 "editable":true,
                 "maxlength":null,
                 "minlength":null,

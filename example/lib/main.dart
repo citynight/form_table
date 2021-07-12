@@ -1,6 +1,5 @@
 import 'package:example/page/FormPage.dart';
 import 'package:example/page/form_dynamic_page.dart';
-import 'package:example/utils.dart';
 import 'package:flutter/material.dart';
 
 void main() {

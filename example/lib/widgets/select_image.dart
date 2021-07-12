@@ -7,9 +7,9 @@ import 'package:image_picker/image_picker.dart';
 /// @CreateTime 2021/7/12 6:27 下午.
 /// @author logan
 class SelectImageView extends StatefulWidget {
-  SelectImageView({Key? key, required this.selected}) : super(key: key);
+  SelectImageView({Key? key, this.selected}) : super(key: key);
 
-  final Future Function(File image) selected;
+  final Future Function(File image)? selected;
 
   @override
   _SelectImageViewState createState() => _SelectImageViewState();
@@ -78,7 +78,7 @@ class _SelectImageViewState extends State<SelectImageView> {
         final bool result = await _getImage(source);
         if (!result) return;
         if (widget.selected == null) return;
-        final url = await widget.selected(_image!);
+        final url = await widget.selected!(_image!);
         if (url != null) _imageUrl = url;
         setState(() {});
       },

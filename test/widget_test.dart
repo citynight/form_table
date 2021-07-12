@@ -8,8 +8,6 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:form_table/form_table.dart';
-
 void main() {
   const MethodChannel channel = MethodChannel('form_table');
 

@@ -42,7 +42,7 @@ class _VerifitionCodeButtonState extends State<VerifitionCodeButton> {
     return TextButton(
         onPressed: () {
           if (timer == null) {
-            if (widget.onPressed != null) widget.onPressed();
+            widget.onPressed();
             timer = Timer.periodic(Duration(seconds: 1), (_) {
               seconds--;
               if (seconds == 0) {

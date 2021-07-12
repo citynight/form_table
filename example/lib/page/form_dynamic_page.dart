@@ -47,15 +47,16 @@ class FormDynamicPage extends StatelessWidget {
                       onPressed: () {
                         //校验
                         List errors =
-                        (_dynamicFormKey.currentState as FormTableState)
-                            .validate();
+                            (_dynamicFormKey.currentState as FormTableState)
+                                .validate();
                         if (errors.isNotEmpty) {
                           showToast(errors.first);
                           return;
                         }
                         //提交
                         showToast("成功");
-                      }, margin: EdgeInsets.all(0),
+                      },
+                      margin: EdgeInsets.all(0),
                     ),
                   ),
                 ),
@@ -72,12 +73,11 @@ class FormDynamicPage extends StatelessWidget {
 }
 
 Future getData() async {
-  final json = await rootBundle
-      .loadString("lib/src/test.json");
+  final json = await rootBundle.loadString("lib/src/test.json");
   List form = jsonDecode(json)["data"]["form"];
   List<FormTableRow> rows = [];
   form.forEach((e) {
-    FormTableRow row = getRow(e);
+    FormTableRow? row = getRow(e);
     if (row != null) {
       rows.add(row);
     }
@@ -85,9 +85,9 @@ Future getData() async {
   return rows;
 }
 
-FormTableRow getRow(e) {
+FormTableRow? getRow(e) {
   int type = int.parse(e["type"]);
-  late FormTableRow row;
+  FormTableRow? row;
   switch (type) {
     case 1:
       row = FormTableRow.input(
@@ -151,9 +151,12 @@ FormTableRow getRow(e) {
         if (element["isOpen"] == "1") {
           List<FormTableRow> rows = [];
           (element["extra"] as List).forEach((element) {
-            rows.add(getRow(element));
+            var row = getRow(element);
+            if (row != null) {
+              rows.add(row);
+            }
           });
-          row.state = rows;
+          row!.state = rows;
         }
       });
       break;
@@ -182,7 +185,7 @@ FormTableRow getRow(e) {
         },
         validator: (row) {
           if (!RegExp(
-              r'^((13[0-9])|(14[0-9])|(15[0-9])|(16[0-9])|(17[0-9])|(18[0-9])|(19[0-9]))\d{8}$')
+                  r'^((13[0-9])|(14[0-9])|(15[0-9])|(16[0-9])|(17[0-9])|(18[0-9])|(19[0-9]))\d{8}$')
               .hasMatch(row.value ?? "")) {
             row.requireMsg = "请输入正确的${row.title}";
             return false;
