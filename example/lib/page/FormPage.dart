@@ -28,7 +28,8 @@ class FormPage extends StatelessWidget {
             ),
             onPressed: () {
               //校验
-              List errors = (_formKey.currentState as FormTableState).validate();
+              List errors =
+                  (_formKey.currentState as FormTableState).validate();
               if (errors.isNotEmpty) {
                 showToast(errors.first);
                 return;
@@ -52,6 +53,15 @@ class FormPage extends StatelessWidget {
 
 List<FormTableRow> buildFormRows() {
   return [
+    FormTableRow.input(
+      value: "呀哈哈",
+      textFieldConfig: FormTableConfig(
+        height: 100,
+        titleStyle: TextStyle(color: Colors.red, fontSize: 20),
+        valueStyle: TextStyle(color: Colors.orange, fontSize: 30),
+        placeholderStyle: TextStyle(color: Colors.green, fontSize: 25),
+      ),
+    ),
     FormTableRow.input(
       title: "姓名",
       placeholder: "请输入姓名",
@@ -81,7 +91,7 @@ List<FormTableRow> buildFormRows() {
       textAlign: TextAlign.right,
       validator: (row) {
         return RegExp(
-            r'^((13[0-9])|(14[0-9])|(15[0-9])|(16[0-9])|(17[0-9])|(18[0-9])|(19[0-9]))\d{8}$')
+                r'^((13[0-9])|(14[0-9])|(15[0-9])|(16[0-9])|(17[0-9])|(18[0-9])|(19[0-9]))\d{8}$')
             .hasMatch(row.value ?? "");
       },
     ),
@@ -113,15 +123,15 @@ List<FormTableRow> buildFormRows() {
           },
           child: row.state
               ? Icon(
-            Icons.visibility_off,
-            size: 20.0,
-            color: Colors.blueAccent,
-          )
+                  Icons.visibility_off,
+                  size: 20.0,
+                  color: Colors.blueAccent,
+                )
               : Icon(
-            Icons.visibility,
-            size: 20.0,
-            color:  Colors.blueAccent,
-          ),
+                  Icons.visibility,
+                  size: 20.0,
+                  color: Colors.blueAccent,
+                ),
         );
       },
     ),

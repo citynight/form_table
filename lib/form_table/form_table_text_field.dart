@@ -52,9 +52,17 @@ class _FormTableTextFieldState extends State<FormTableTextField> {
           height: row.textFieldConfig?.height ?? 44.0,
           child: Row(
             children: [
-              (row.title ?? "").contains("*") ? _buildTitleText() : _buildRichText(),
-              SizedBox(
-                width: 5,
+              Visibility(
+                visible: row.title != null,
+                child: row.title!.contains("*")
+                    ? _buildTitleText()
+                    : _buildRichText(),
+              ),
+              Visibility(
+                visible: row.title != null,
+                child: SizedBox(
+                  width: 5,
+                ),
               ),
               Expanded(
                 child: _buildCupertinoTextField(context),
