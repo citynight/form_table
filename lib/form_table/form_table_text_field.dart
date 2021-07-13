@@ -53,13 +53,13 @@ class _FormTableTextFieldState extends State<FormTableTextField> {
           child: Row(
             children: [
               Visibility(
-                visible: row.title != null,
-                child: row.title!.contains("*")
+                visible: row.hiddenTitle == false,
+                child: (row.title ?? "").contains("*")
                     ? _buildTitleText()
                     : _buildRichText(),
               ),
               Visibility(
-                visible: row.title != null,
+                visible: row.hiddenTitle == false,
                 child: SizedBox(
                   width: 5,
                 ),

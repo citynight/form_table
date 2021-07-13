@@ -35,6 +35,9 @@ class FormTableRow implements FormTableCloneable<FormTableRow> {
   /// 输入框占位提示语
   String? placeholder;
 
+  /// 是否隐藏标题
+  bool? hiddenTitle;
+
   /// 能否编辑
   bool? enabled;
 
@@ -98,6 +101,7 @@ class FormTableRow implements FormTableCloneable<FormTableRow> {
     this.title = "",
     this.value = "",
     this.placeholder = "",
+    this.hiddenTitle = false,
     this.enabled = true,
     this.require = false,
     this.requireStar = false,
@@ -125,6 +129,7 @@ class FormTableRow implements FormTableCloneable<FormTableRow> {
     this.title = "",
     this.value = "",
     this.placeholder = "",
+    this.hiddenTitle = false,
     this.enabled = true,
     this.require = false,
     this.requireStar = false,
@@ -155,6 +160,7 @@ class FormTableRow implements FormTableCloneable<FormTableRow> {
       this.placeholder = "请选择",
       this.require = true,
       this.requireStar = false,
+      this.hiddenTitle = false,
       this.enabled = true,
       this.requireMsg,
       this.options,
@@ -192,6 +198,7 @@ class FormTableRow implements FormTableCloneable<FormTableRow> {
       this.placeholder = "请选择",
       this.require = true,
       this.requireStar = false,
+      this.hiddenTitle = false,
       this.enabled = true,
       this.requireMsg,
       this.options,
@@ -233,6 +240,7 @@ class FormTableRow implements FormTableCloneable<FormTableRow> {
       ..title = title
       ..value = value
       ..placeholder = placeholder
+      ..hiddenTitle = hiddenTitle
       ..enabled = enabled
       ..require = require
       ..requireStar = requireStar
