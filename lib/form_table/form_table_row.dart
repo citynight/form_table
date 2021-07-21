@@ -230,6 +230,8 @@ class FormTableRow implements FormTableCloneable<FormTableRow> {
       this.require = true,
       this.requireMsg,
       this.validator,
+      this.onTap,
+      this.onChanged,
       this.type = FormTableRowType.customSelector});
 
   @override

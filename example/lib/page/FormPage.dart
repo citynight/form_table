@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:form_table/form_table.dart';
 import 'package:form_table/form_table/form_table.dart';
 import 'package:form_table_example/widgets/photos_cell.dart';
+import 'package:form_table_example/widgets/switch_cell.dart';
 import 'package:form_table_example/widgets/verifitionc_code_button.dart';
 
 import '../utils.dart';
@@ -219,5 +220,15 @@ List<FormTableRow> buildFormRows() {
         return CustomPhotosWidget(row: row);
       },
     ),
+    FormTableRow.customCellBuilder(
+        title: "Switch",
+        state: true,
+        value: "1",
+        customWidget: (context, row) {
+          return SwitchCell(row: row);
+        },
+        onChanged: (row) {
+          print("当前Switch的值更改为${row.value}");
+        }),
   ];
 }
