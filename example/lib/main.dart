@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:form_table_example/page/FormPage.dart';
+import 'package:form_table_example/page/form_page.dart';
 import 'package:form_table_example/page/form_dynamic_page.dart';
 
 void main() {
@@ -23,7 +23,6 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         title: Text("示例"),
@@ -63,4 +62,3 @@ class HomePage extends StatelessWidget {
     );
   }
 }
-

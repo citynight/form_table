@@ -224,6 +224,7 @@ List<FormTableRow> buildFormRows() {
         title: "Switch",
         state: true,
         value: "1",
+        enabled: false,
         customWidget: (context, row) {
           return SwitchCell(row: row);
         },

@@ -32,6 +32,9 @@ class _SwitchCellState extends State<SwitchCell> {
             child: CupertinoSwitch(
               value: widget.row.value == "1",
               onChanged: (bool value) {
+                if (widget.row.enabled == false) {
+                  return;
+                }
                 setState(() {
                   widget.row.value = value ? "1" : "0";
                 });

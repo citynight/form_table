@@ -39,7 +39,7 @@ class _FormTableCellState extends State<FormTableCell> {
         ? TweenAnimationBuilder(
             child: widget,
             duration: Duration(milliseconds: 500),
-            builder: (context,double value, child) {
+            builder: (context, double value, child) {
               return Opacity(
                 alwaysIncludeSemantics: true,
                 opacity: value,
