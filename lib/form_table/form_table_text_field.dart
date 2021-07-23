@@ -106,7 +106,7 @@ class _FormTableTextFieldState extends State<FormTableTextField> {
           switch (widget.row.type) {
             case FormTableRowType.multipleSelector:
             case FormTableRowType.singleSelector:
-              if (row.options == null || row.options!.isEmpty) return;
+              if (row.options == null) return;
               value = await Navigator.push(
                 context,
                 MaterialPageRoute(
