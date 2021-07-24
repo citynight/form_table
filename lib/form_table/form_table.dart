@@ -40,7 +40,7 @@ class FormTable extends StatefulWidget {
   }
 
   @override
-  FormTableState createState() => FormTableState(rows);
+  FormTableState createState() => FormTableState(this.rows);
 }
 
 class FormTableState extends State<FormTable> {
@@ -85,7 +85,15 @@ class FormTableState extends State<FormTable> {
   void reload() {
     FocusScope.of(context).requestFocus(FocusNode());
     setState(() {
-      rows = [...rows];
+      rows = [...widget.rows];
+    });
+  }
+
+  /// 更换表单
+  void updateRows(List<FormTableRow> rows) {
+    FocusScope.of(context).requestFocus(FocusNode());
+    setState(() {
+      this.rows = rows;
     });
   }
 
@@ -119,7 +127,9 @@ class _FormTableList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final rows = FormTable.of(context).rows;
-    Widget list = new SizedBox(height: 1,);
+    Widget list = new SizedBox(
+      height: 1,
+    );
     switch (type) {
       case FormTableType.column:
         list = GestureDetector(

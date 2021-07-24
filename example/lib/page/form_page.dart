@@ -11,48 +11,7 @@ import '../utils.dart';
 /// @CreateTime 2021/7/12 6:34 下午.
 /// @author logan
 
-class FormPage extends StatelessWidget {
-  FormPage({Key? key}) : super(key: key);
-  final GlobalKey _formKey = GlobalKey<FormTableState>();
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.grey[200],
-      appBar: AppBar(
-        title: Text("表单"),
-        actions: [
-          TextButton(
-            child: Text(
-              "提交",
-              style: TextStyle(color: Colors.white, fontSize: 16),
-            ),
-            onPressed: () {
-              //校验
-              List errors =
-                  (_formKey.currentState as FormTableState).validate();
-              if (errors.isNotEmpty) {
-                showToast(errors.first);
-                return;
-              }
-              //通过
-              showToast("提交成功");
-            },
-          ),
-        ],
-      ),
-      body: FormTable.builder(
-        key: _formKey,
-        rows: buildFormRows(),
-        divider: Divider(
-          height: 1,
-        ),
-      ),
-    );
-  }
-}
-
-List<FormTableRow> buildFormRows() {
+List<FormTableRow> buildFormRows(List<String> list) {
   return [
     FormTableRow.input(
       value: "呀哈哈",
@@ -89,6 +48,7 @@ List<FormTableRow> buildFormRows() {
       requireMsg: "请输入正确的手机号",
       requireStar: true,
       enabled: true,
+      value: "1231231231",
       textAlign: TextAlign.right,
       validator: (row) {
         return RegExp(
@@ -140,7 +100,7 @@ List<FormTableRow> buildFormRows() {
       title: "婚姻状况",
       placeholder: "请选择",
       state: [
-        ["未婚", "已婚"],
+        list,
         [
           FormTableRow.input(
               title: "配偶姓名", placeholder: "请输入配偶姓名", requireStar: true),
@@ -151,7 +111,7 @@ List<FormTableRow> buildFormRows() {
       onTap: (context, row) async {
         String value = await showPicker(row.state[0], context);
         if (row.value != value) {
-          if (value == "已婚") {
+          if (value == "已婚1") {
             FormTable.of(context).insert(row, row.state[1]);
           } else {
             FormTable.of(context).delete(row.state[1]);
@@ -232,4 +192,61 @@ List<FormTableRow> buildFormRows() {
           print("当前Switch的值更改为${row.value}");
         }),
   ];
+}
+
+class FormPage extends StatefulWidget {
+  FormPage({Key? key}) : super(key: key);
+
+  @override
+  _FormPageState createState() => _FormPageState();
+}
+
+class _FormPageState extends State<FormPage> {
+  final GlobalKey _formKey = GlobalKey<FormTableState>();
+  List<FormTableRow> formRows = [];
+  @override
+  void initState() {
+    super.initState();
+    formRows = buildFormRows(["未婚", "已婚"]);
+    Future.delayed(Duration(seconds: 3), () {
+      formRows = buildFormRows(["未婚1", "已婚1"]);
+      (_formKey.currentState as FormTableState).updateRows(formRows);
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.grey[200],
+      appBar: AppBar(
+        title: Text("表单"),
+        actions: [
+          TextButton(
+            child: Text(
+              "提交",
+              style: TextStyle(color: Colors.white, fontSize: 16),
+            ),
+            onPressed: () {
+              //校验
+              List errors =
+                  (_formKey.currentState as FormTableState).validate();
+              if (errors.isNotEmpty) {
+                showToast(errors.first);
+                return;
+              }
+              //通过
+              showToast("提交成功");
+            },
+          ),
+        ],
+      ),
+      body: FormTable.builder(
+        key: _formKey,
+        rows: formRows,
+        divider: Divider(
+          height: 1,
+        ),
+      ),
+    );
+  }
 }

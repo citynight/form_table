@@ -4,7 +4,8 @@ class FormTableOptionModel {
   final int? index;
   final String value;
   bool selected;
-  FormTableOptionModel( {required this.value,this.index, this.selected = false});
+  FormTableOptionModel(
+      {required this.value, this.index, this.selected = false});
 }
 
 class FormTableConfig {
@@ -16,8 +17,8 @@ class FormTableConfig {
   Divider? divider;
   Widget? selectorIcon;
   Color? disableColor;
-  FormTableConfig({
-      this.height,
+  FormTableConfig(
+      {this.height,
       this.padding,
       this.titleStyle,
       this.valueStyle,
