@@ -203,6 +203,7 @@ class FormTableRow implements FormTableCloneable<FormTableRow> {
       this.requireMsg,
       this.options,
       this.onTap,
+      this.onChanged,
       this.validator,
       this.textFieldConfig,
       this.suffixWidget,
